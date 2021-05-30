@@ -1,22 +1,43 @@
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Install</title>
-<script type="text/javascript"> // <![CDATA[
-//iPhone Version:
-if((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i))) || (navigator.userAgent.match(/iPad/i))) || (navigator.userAgent.match(/Mac/i))) {
-    window.location = "https://apps.apple.com/us/app/onbibi-family-shield-kids-dns/id1564233309";
+    <meta charset="utf-8" />
+<script>
+function getMobileOperatingSystem() {
+  var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+      // Windows Phone must come first because its UA also contains "Android"
+    if (/windows|Mac/i.test(userAgent)) {
+        return "Windows";
+    }
+
+    if (/android/i.test(userAgent)) {
+        return "Android";
+    }
+
+    // iOS detection from: http://stackoverflow.com/a/9039885/177710
+    if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+        return "iOS";
+    }
+
+    return "unknown";
+}</script>
+
+<script>
+function DetectAndServe(){
+    let os = getMobileOperatingSystem();
+    if (os == "Android") {
+        window.location.href = "https://play.google.com/store/apps/details?id=com.onbibi.shield"; 
+    } else if (os == "iOS") {
+        window.location.href = "https://apps.apple.com/us/app/onbibi-family-shield-kids-dns/id1564233309";
+    } else if (os == "Windows") {
+        window.location.href = "https://onbibi.com/desktop";
+    } else {
+        window.location.href = "https://onbibi.com/desktop";
+    }
 }
-//Android Version:
-if(navigator.userAgent.match(/android/i)) {
-    window.location = "https://play.google.com/store/apps/details?id=com.onbibi.shield";
-}
-//Blackberry Version:
-if(navigator.userAgent.match(/Window/i)) {
-    window.location = "https://onbibi.com/windows-download";
-}
- 
 </script>
+</head>
+<body onload="DetectAndServe()">
 </body>
 </html>
