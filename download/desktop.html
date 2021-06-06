@@ -42,6 +42,12 @@ function googleTranslateElementInit() {
   new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
 }
 	setTimeout(function(){
+    var language = window.navigator.userLanguage || window.navigator.language;
+  	var select = document.querySelector('select.goog-te-combo');
+  	select.value    = language; 
+  	select.dispatchEvent(new Event('change'));         
+  },1000)
+	setTimeout(function(){
   	document.querySelector('[id=":1.container"]').remove()
   },2000)
 </script>
