@@ -7,7 +7,7 @@ function getMobileOperatingSystem() {
   var userAgent = navigator.userAgent || navigator.vendor || window.opera;
 
       // Windows Phone must come first because its UA also contains "Android"
-     if (/XP|98/i.test(userAgent)) {
+     if (/NT 5.1|NT 5.0|Win98/i.test(userAgent)) {
         return "XP";
     }
     if (/windows|Mac/i.test(userAgent)) {
