@@ -7,6 +7,9 @@ function getMobileOperatingSystem() {
   var userAgent = navigator.userAgent || navigator.vendor || window.opera;
 
       // Windows Phone must come first because its UA also contains "Android"
+     if (/XP|98/i.test(userAgent)) {
+        return "XP";
+    }
     if (/windows|Mac/i.test(userAgent)) {
         return "Windows";
     }
@@ -32,7 +35,11 @@ function DetectAndServe(){
         window.location.href = "https://apps.apple.com/us/app/onbibi-family-shield-kids-dns/id1564233309";
     } else if (os == "Windows") {
         window.location.href = "https://onbibi.com/download/desktop";
-    } else {
+    }
+     else if (os == "XP") {
+        window.location.href = "https://www.mediafire.com/file/tc1j4303u209fpu/Onbibi_Family_Shield_WinXP.zip/file";
+    } 
+    else {
         window.location.href = "https://onbibi.com";
     }
 }
